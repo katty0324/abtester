@@ -6,7 +6,7 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
   <div .card-body>
-    <form .form-horizontal>
+    <form method=get>
       <table .table>
         <thead>
           <tr>
@@ -16,19 +16,19 @@
             <th>CVR
         <tbody>
           <tr>
-            <th>A
+            <th>Original
             <td>
-              <input .form-control type=text name=variant[0][visitors]>
+              <input .form-control type=number name=variants[0][visitors] value=#{showMaybeText visitos0Text}>
             <td>
-              <input .form-control type=text name=variant[0][conversions]>
-            <td>-
+              <input .form-control type=number name=variants[0][conversions] value=#{showMaybeText conversions0Text}>
+            <td>#{showPercent conversionRate0}
           <tr>
-            <th>B
+            <th>Pattern 1
             <td>
-              <input .form-control type=text name=variant[1][visitors]>
+              <input .form-control type=number name=variants[1][visitors] value=#{showMaybeText visitos1Text}>
             <td>
-              <input .form-control type=text name=variant[1][conversions]>
-            <td>-
+              <input .form-control type=number name=variants[1][conversions] value=#{showMaybeText conversions1Text}>
+            <td>#{showPercent conversionRate1}
 
-    <button .btn.btn-primary.btn-block type=submit>
-        Test
+      <button .btn.btn-primary.btn-block type=submit>
+          Test

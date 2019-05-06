@@ -35,7 +35,7 @@
                             <tt>config/routes
 
                         <li .list-group-item>
-                            We can link to other handlers, like the <a href="@{CommentR}">Comment</a>.
+                            We can link to other handlers, like the <a href="@{HomeR}">Comment</a>.
 
                         <li .list-group-item>
                             The HTML you are seeing now is actually composed by a number of <em>widgets</em>, #

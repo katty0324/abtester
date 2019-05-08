@@ -18,16 +18,16 @@
           <tr>
             <th>Original
             <td>
-              <input .form-control type=number name=variants[0][visitors] value=#{showMaybeText visitos0Text}>
+              <input .form-control type=number name=variants[0][visitors] value=#{showMaybeFloat $ fmap visitors variant0}>
             <td>
-              <input .form-control type=number name=variants[0][conversions] value=#{showMaybeText conversions0Text}>
+              <input .form-control type=number name=variants[0][conversions] value=#{showMaybeFloat $ fmap conversions variant0}>
             <td>#{showPercent conversionRate0}
           <tr>
             <th>Pattern 1
             <td>
-              <input .form-control type=number name=variants[1][visitors] value=#{showMaybeText visitos1Text}>
+              <input .form-control type=number name=variants[1][visitors] value=#{showMaybeFloat $ fmap visitors variant1}>
             <td>
-              <input .form-control type=number name=variants[1][conversions] value=#{showMaybeText conversions1Text}>
+              <input .form-control type=number name=variants[1][conversions] value=#{showMaybeFloat $ fmap visitors variant1}>
             <td>#{showPercent conversionRate1}
 
       <button .btn.btn-primary.btn-block type=submit>

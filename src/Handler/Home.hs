@@ -6,6 +6,7 @@
 
 module Handler.Home where
 
+import           Handler.Helper
 import           Import
 import           Model.ConversionRate
 import           Model.Times
@@ -14,16 +15,10 @@ import           Model.Variant
 getHomeR :: Handler Html
 getHomeR = do
   parameters <- reqGetParams <$> getRequest
-  let variant0 = getVariant parameters 0
-      variant1 = getVariant parameters 1
+  let variant0 = extractVariant parameters 0
+      variant1 = extractVariant parameters 1
       conversionRate0 = fmap calculateConversionRate variant0
       conversionRate1 = fmap calculateConversionRate variant1
   defaultLayout $ do
     setTitle "AB Tester"
     $(widgetFile "homepage")
-
-showMaybe :: (a -> Text) -> Maybe a -> Text
-showMaybe f maybeValue =
-  case maybeValue of
-    Just value -> f value
-    Nothing    -> "-"

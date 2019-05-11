@@ -12,7 +12,6 @@ newtype Times =
   Times
     { getTimes :: Int
     }
-  deriving (Show)
 
 displayTimes :: Times -> Text
 displayTimes times = pack . show $ getTimes times

@@ -15,7 +15,6 @@ newtype ConversionRate =
   ConversionRate
     { getConversionRate :: Float
     }
-  deriving (Show)
 
 displayConversionRate :: ConversionRate -> Text
 displayConversionRate conversionRate =
@@ -25,5 +24,5 @@ displayConversionRate conversionRate =
 calculateConversionRate :: Variant -> ConversionRate
 calculateConversionRate variant =
   ConversionRate $
-  (fromIntegral (getTimes (conversions variant) :: Int)) /
-  (fromIntegral (getTimes (visitors variant) :: Int))
+  (fromIntegral (getTimes (success variant) :: Int)) /
+  (fromIntegral (getTimes (total variant) :: Int))

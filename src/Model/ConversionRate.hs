@@ -3,10 +3,13 @@
 
 module Model.ConversionRate
   ( ConversionRate(..)
-  , showConversionRate
+  , displayConversionRate
+  , calculateConversionRate
   ) where
 
 import           Import
+import           Model.Times
+import           Model.Variant
 
 newtype ConversionRate =
   ConversionRate
@@ -14,7 +17,13 @@ newtype ConversionRate =
     }
   deriving (Show)
 
-showConversionRate :: ConversionRate -> Text
-showConversionRate conversionRate =
+displayConversionRate :: ConversionRate -> Text
+displayConversionRate conversionRate =
   (pack . show $ (fromIntegral . ceiling $ getConversionRate conversionRate * 10000) / 100) `mappend`
   "%"
+
+calculateConversionRate :: Variant -> ConversionRate
+calculateConversionRate variant =
+  ConversionRate $
+  (fromIntegral (getTimes (conversions variant) :: Int)) /
+  (fromIntegral (getTimes (visitors variant) :: Int))

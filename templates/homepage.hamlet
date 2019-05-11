@@ -18,17 +18,17 @@
           <tr>
             <th>Original
             <td>
-              <input .form-control type=number name=variants[0][visitors] value=#{showMaybeFloat $ fmap visitors variant0}>
+              <input .form-control type=number name=variants[0][visitors] value=#{showMaybe (displayTimes . visitors) variant0}>
             <td>
-              <input .form-control type=number name=variants[0][conversions] value=#{showMaybeFloat $ fmap conversions variant0}>
-            <td>#{showMaybe conversionRate0 showConversionRate}
+              <input .form-control type=number name=variants[0][conversions] value=#{showMaybe (displayTimes . visitors) variant0}>
+            <td>#{showMaybe displayConversionRate conversionRate0}
           <tr>
             <th>Pattern 1
             <td>
-              <input .form-control type=number name=variants[1][visitors] value=#{showMaybeFloat $ fmap visitors variant1}>
+              <input .form-control type=number name=variants[1][visitors] value=#{showMaybe (displayTimes . visitors) variant1}>
             <td>
-              <input .form-control type=number name=variants[1][conversions] value=#{showMaybeFloat $ fmap visitors variant1}>
-            <td>#{showMaybe conversionRate1 showConversionRate}
+              <input .form-control type=number name=variants[1][conversions] value=#{showMaybe (displayTimes . visitors) variant1}>
+            <td>#{showMaybe displayConversionRate conversionRate1}
 
       <button .btn.btn-primary.btn-block type=submit>
           Test

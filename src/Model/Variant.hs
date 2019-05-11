@@ -4,17 +4,16 @@
 module Model.Variant
   ( Variant(..)
   , getVariant
-  , calculateConversionRate
   ) where
 
 import           Import
-import           Model.ConversionRate
-import           Text.Read            (readMaybe)
+import           Model.Times
+import           Text.Read   (readMaybe)
 
 data Variant =
   Variant
-    { visitors    :: Float
-    , conversions :: Float
+    { visitors    :: Times
+    , conversions :: Times
     }
 
 getVariant :: [(Text, Text)] -> Int -> Maybe Variant
@@ -30,8 +29,8 @@ getKey :: Text -> Int -> Text
 getKey key index =
   "variants[" `mappend` (pack $ show index) `mappend` "][" `mappend` key `mappend` "]"
 
-calculateConversionRate :: Variant -> ConversionRate
-calculateConversionRate variant = ConversionRate $ conversions variant / visitors variant
-
-parseNumber :: Text -> Maybe Float
-parseNumber text = readMaybe $ unpack text
+parseNumber :: Text -> Maybe Times
+parseNumber text =
+  case readMaybe $ unpack text of
+    Just a  -> Just $ Times a
+    Nothing -> Nothing

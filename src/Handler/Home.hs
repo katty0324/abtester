@@ -8,6 +8,7 @@ module Handler.Home where
 
 import           Import
 import           Model.ConversionRate
+import           Model.Times
 import           Model.Variant
 
 getHomeR :: Handler Html
@@ -21,17 +22,8 @@ getHomeR = do
     setTitle "AB Tester"
     $(widgetFile "homepage")
 
-showMaybe :: Maybe a -> (a -> Text) -> Text
-showMaybe x f =
-  case x of
-    Just y  -> f y
-    Nothing -> "-"
-
-showMaybeFloat :: Maybe Float -> Text
-showMaybeFloat maybeFloat = showMaybeText $ fmap (pack . show) maybeFloat
-
-showMaybeText :: Maybe Text -> Text
-showMaybeText maybeText =
-  case maybeText of
-    Just text -> text
-    Nothing   -> ""
+showMaybe :: (a -> Text) -> Maybe a -> Text
+showMaybe f maybeValue =
+  case maybeValue of
+    Just value -> f value
+    Nothing    -> "-"

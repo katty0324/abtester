@@ -18,17 +18,17 @@
           <tr>
             <th>Original
             <td>
-              <input .form-control type=number name=variants[0][total] value=#{showMaybe (displayTimes . total) variant0 ""}>
+              <input .form-control type=number name=records[0][total] value=#{showMaybe (displayTimes . (total . record)) variant0 ""}>
             <td>
-              <input .form-control type=number name=variants[0][success] value=#{showMaybe (displayTimes . success) variant0 ""}>
-            <td>#{showMaybe displayConversionRate conversionRate0 "-"}
+              <input .form-control type=number name=records[0][success] value=#{showMaybe (displayTimes . (success . record)) variant0 ""}>
+            <td>#{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
           <tr>
             <th>Pattern 1
             <td>
-              <input .form-control type=number name=variants[1][total] value=#{showMaybe (displayTimes . total) variant1 ""}>
+              <input .form-control type=number name=records[1][total] value=#{showMaybe (displayTimes . (total . record)) variant1 ""}>
             <td>
-              <input .form-control type=number name=variants[1][success] value=#{showMaybe (displayTimes . success) variant1 ""}>
-            <td>#{showMaybe displayConversionRate conversionRate1 "-"}
+              <input .form-control type=number name=records[1][success] value=#{showMaybe (displayTimes . (success . record)) variant1 ""}>
+            <td>#{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
 
       <button .btn.btn-primary.btn-block type=submit>
           Test

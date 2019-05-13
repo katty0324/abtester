@@ -1,9 +1,8 @@
 <div .card.my-3.mx-auto.w-75>
   <div .card-body>
-    <h2>Input total and success
-    <p>
-      How to use.
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <h2>_{MsgCaption}
+    <p .text-muted>
+      _{MsgDescription}
 
   <div .card-body>
     <form method=get>
@@ -11,24 +10,40 @@
         <thead>
           <tr>
             <th>
-            <th>Total
-            <th>Success
-            <th>Probability
+            <th>_{MsgSessionCount}
+            <th>_{MsgConversionCount}
+            <th>_{MsgConversionRate}
+            <th>_{MsgProbabilityToBeatBaseline}
+            <th>_{MsgProbabilityToBeBest}
         <tbody>
           <tr>
-            <th>Original
+            <th>
+              _{MsgOriginal}
             <td>
               <input .form-control type=number name=records[0][total] value=#{showMaybe (displayTimes . (total . record)) variant0 ""}>
             <td>
               <input .form-control type=number name=records[0][success] value=#{showMaybe (displayTimes . (success . record)) variant0 ""}>
-            <td>#{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
+            <td>
+              <small .text-muted>0.5% 〜
+              <span>#{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
+              <small .text-muted>〜1.5%
+            <td>
+              -
+            <td>
+              -
           <tr>
-            <th>Pattern 1
+            <th>
+              _{MsgPattern} 1
             <td>
               <input .form-control type=number name=records[1][total] value=#{showMaybe (displayTimes . (total . record)) variant1 ""}>
             <td>
               <input .form-control type=number name=records[1][success] value=#{showMaybe (displayTimes . (success . record)) variant1 ""}>
-            <td>#{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
+            <td>
+              #{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
+            <td>
+              -
+            <td>
+              -
 
       <button .btn.btn-primary.btn-block type=submit>
-          Test
+        _{MsgTest}

@@ -13,6 +13,8 @@ import           Model.Record
 import           Model.Times
 import           Model.Variant
 
+mkMessage "App" "messages" "en"
+
 getHomeR :: Handler Html
 getHomeR = do
   parameters <- reqGetParams <$> getRequest

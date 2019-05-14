@@ -4,6 +4,8 @@
 module Model.Record
   ( Record(..)
   , extractRecord
+  , mean
+  , standardDeviation
   ) where
 
 import           Import
@@ -12,15 +14,15 @@ import           Text.Read   (readMaybe)
 
 data Record =
   Record
-    { total   :: Times
-    , success :: Times
+    { session    :: Times
+    , conversion :: Times
     }
 
 extractRecord :: [(Text, Text)] -> Int -> Maybe Record
 extractRecord parameters index = do
-  total <- lookupValue parameters "total" index >>= parseTimes
-  success <- lookupValue parameters "success" index >>= parseTimes
-  Just $ Record total success
+  session <- lookupValue parameters "session" index >>= parseTimes
+  conversion <- lookupValue parameters "conversion" index >>= parseTimes
+  Just $ Record session conversion
 
 lookupValue :: [(Text, Text)] -> Text -> Int -> Maybe Text
 lookupValue parameters key index = lookup (getKey key index) parameters
@@ -34,3 +36,11 @@ parseTimes text =
   case readMaybe $ unpack text of
     Just a  -> Just $ Times a
     Nothing -> Nothing
+
+mean :: Record -> Float
+mean record =
+  (fromIntegral . getTimes . conversion) record / (fromIntegral . getTimes . session) record
+
+standardDeviation :: Record -> Float
+standardDeviation record =
+  sqrt $ mean record * (1 - mean record) / (fromIntegral . getTimes . session) record

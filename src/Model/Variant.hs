@@ -15,7 +15,9 @@ data Variant =
   Variant
     { record         :: Record
     , conversionRate :: ConversionRate
+    , lowerConversionRate :: ConversionRate
+    , upperConversionRate :: ConversionRate
     }
 
 variant :: Record -> Variant
-variant record = Variant record (calculateConversionRate record)
+variant record = Variant record (calculateConversionRate record) (calculateLowerConversionRate record) (calculateUpperConversionRate record)

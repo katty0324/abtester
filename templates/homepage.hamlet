@@ -20,13 +20,16 @@
             <th>
               _{MsgOriginal}
             <td>
-              <input .form-control type=number name=records[0][total] value=#{showMaybe (displayTimes . (total . record)) variant0 ""}>
+              <input .form-control type=number name=records[0][session] value=#{showMaybe (displayTimes . (session . record)) variant0 ""}>
             <td>
-              <input .form-control type=number name=records[0][success] value=#{showMaybe (displayTimes . (success . record)) variant0 ""}>
+              <input .form-control type=number name=records[0][conversion] value=#{showMaybe (displayTimes . (conversion . record)) variant0 ""}>
             <td>
-              <small .text-muted>0.5% 〜
-              <span>#{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
-              <small .text-muted>〜1.5%
+              <small .text-muted>
+                #{showMaybe (displayConversionRate . lowerConversionRate) variant0 "-"} 〜
+              <span>
+                #{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
+              <small .text-muted>
+                〜 #{showMaybe (displayConversionRate . upperConversionRate) variant0 "-"}
             <td>
               -
             <td>
@@ -35,11 +38,11 @@
             <th>
               _{MsgPattern} 1
             <td>
-              <input .form-control type=number name=records[1][total] value=#{showMaybe (displayTimes . (total . record)) variant1 ""}>
+              <input .form-control type=number name=records[1][session] value=#{showMaybe (displayTimes . (session . record)) variant1 ""}>
             <td>
-              <input .form-control type=number name=records[1][success] value=#{showMaybe (displayTimes . (success . record)) variant1 ""}>
+              <input .form-control type=number name=records[1][conversion] value=#{showMaybe (displayTimes . (conversion . record)) variant1 ""}>
             <td>
-              #{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
+              -
             <td>
               -
             <td>

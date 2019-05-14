@@ -5,11 +5,13 @@ module Model.ConversionRate
   ( ConversionRate(..)
   , displayConversionRate
   , calculateConversionRate
+  , calculateLowerConversionRate
+  , calculateUpperConversionRate
   ) where
 
 import           Import
-import           Model.Times
 import           Model.Record
+import           Model.Times
 
 newtype ConversionRate =
   ConversionRate
@@ -22,7 +24,10 @@ displayConversionRate conversionRate =
   "%"
 
 calculateConversionRate :: Record -> ConversionRate
-calculateConversionRate record =
-  ConversionRate $
-  (fromIntegral (getTimes (success record) :: Int)) /
-  (fromIntegral (getTimes (total record) :: Int))
+calculateConversionRate = ConversionRate . mean
+
+calculateLowerConversionRate :: Record -> ConversionRate
+calculateLowerConversionRate record = ConversionRate $ mean record - 2 * standardDeviation record
+
+calculateUpperConversionRate :: Record -> ConversionRate
+calculateUpperConversionRate record = ConversionRate $ mean record + 2 * standardDeviation record

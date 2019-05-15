@@ -14,7 +14,6 @@
             <th>_{MsgConversionCount}
             <th>_{MsgConversionRate}
             <th>_{MsgProbabilityToBeatBaseline}
-            <th>_{MsgProbabilityToBeBest}
         <tbody>
           <tr>
             <th>
@@ -32,8 +31,6 @@
                 〜 #{showMaybe (displayConversionRate . upperConversionRate) variant0 "-"}
             <td>
               -
-            <td>
-              -
           <tr>
             <th>
               _{MsgPattern} 1
@@ -42,11 +39,14 @@
             <td>
               <input .form-control type=number name=records[1][conversion] value=#{showMaybe (displayTimes . (conversion . record)) variant1 ""}>
             <td>
-              -
+              <small .text-muted>
+                #{showMaybe (displayConversionRate . lowerConversionRate) variant1 "-"} 〜
+              <span>
+                #{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
+              <small .text-muted>
+                〜 #{showMaybe (displayConversionRate . upperConversionRate) variant1 "-"}
             <td>
-              -
-            <td>
-              -
+              #{showMaybe displayProbability probabilityToBeastBaseline "-"}
 
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}

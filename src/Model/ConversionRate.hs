@@ -11,7 +11,6 @@ module Model.ConversionRate
 
 import           Import
 import           Model.Record
-import           Model.Times
 
 newtype ConversionRate =
   ConversionRate

@@ -6,11 +6,14 @@ module Model.Record
   , extractRecord
   , mean
   , standardDeviation
+  , probabilityToBeast
   ) where
 
+import           Data.Number.Erf
 import           Import
+import           Model.Probability
 import           Model.Times
-import           Text.Read   (readMaybe)
+import           Text.Read         (readMaybe)
 
 data Record =
   Record
@@ -44,3 +47,12 @@ mean record =
 standardDeviation :: Record -> Float
 standardDeviation record =
   sqrt $ mean record * (1 - mean record) / (fromIntegral . getTimes . session) record
+
+variance :: Record -> Float
+variance record = standardDeviation record ^ 2
+
+probabilityToBeast :: Record -> Record -> Probability
+probabilityToBeast record1 record2 =
+  Probability $
+  1 / 2 *
+  (1 - erf (-(mean record1 - mean record2) / sqrt (2 * (variance record1 + variance record2))))

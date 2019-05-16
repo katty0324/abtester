@@ -19,34 +19,35 @@
             <th>
               _{MsgOriginal}
             <td>
-              <input .form-control type=number name=records[0][session] value=#{showMaybe (displayTimes . (session . record)) variant0 ""}>
+              <input .form-control type=number name=records[0][session] value=#{showMaybe (displayTimes . session) originalMaybeVariant ""}>
             <td>
-              <input .form-control type=number name=records[0][conversion] value=#{showMaybe (displayTimes . (conversion . record)) variant0 ""}>
+              <input .form-control type=number name=records[0][conversion] value=#{showMaybe (displayTimes . conversion) originalMaybeVariant ""}>
             <td>
               <small .text-muted>
-                #{showMaybe (displayConversionRate . lowerConversionRate) variant0 "-"} 〜
+                #{showMaybe (displayConversionRate $ conversionRate -2.0) originalMaybeVariant "-"} 〜
               <span>
-                #{showMaybe (displayConversionRate . conversionRate) variant0 "-"}
+                #{showMaybe (displayConversionRate $ conversionRate 0.0) originalMaybeVariant "-"}
               <small .text-muted>
-                〜 #{showMaybe (displayConversionRate . upperConversionRate) variant0 "-"}
+                〜 #{showMaybe (displayConversionRate $ conversionRate 2.0) originalMaybeVariant "-"}
             <td>
               -
+
           <tr>
             <th>
               _{MsgPattern} 1
             <td>
-              <input .form-control type=number name=records[1][session] value=#{showMaybe (displayTimes . (session . record)) variant1 ""}>
+              <input .form-control type=number name=records[1][session] value=#{showMaybe (displayTimes . session) pattern1MaybeVariant ""}>
             <td>
-              <input .form-control type=number name=records[1][conversion] value=#{showMaybe (displayTimes . (conversion . record)) variant1 ""}>
+              <input .form-control type=number name=records[1][conversion] value=#{showMaybe (displayTimes . conversion) pattern1MaybeVariant ""}>
             <td>
               <small .text-muted>
-                #{showMaybe (displayConversionRate . lowerConversionRate) variant1 "-"} 〜
+                #{showMaybe (displayConversionRate $ conversionRate -2.0) pattern1MaybeVariant "-"} 〜
               <span>
-                #{showMaybe (displayConversionRate . conversionRate) variant1 "-"}
+                #{showMaybe (displayConversionRate $ conversionRate 0.0) pattern1MaybeVariant "-"}
               <small .text-muted>
-                〜 #{showMaybe (displayConversionRate . upperConversionRate) variant1 "-"}
+                〜 #{showMaybe (displayConversionRate $ conversionRate 2.0) pattern1MaybeVariant "-"}
             <td>
-              #{showMaybe displayProbability probabilityToBeastBaseline "-"}
+              #{showMaybe (displayProbability . probabilityToBeastOriginal) pattern1MaybeVariant "-"}
 
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}

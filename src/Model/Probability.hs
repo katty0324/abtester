@@ -8,11 +8,8 @@ module Model.Probability
 
 import           Import
 
-newtype Probability =
-  Probability
-    { getProbability :: Float
-    }
+type Probability = Float
 
 displayProbability :: Probability -> Text
 displayProbability probability =
-  (pack . show $ (fromIntegral . ceiling $ getProbability probability * 1000) / 10) `mappend` "%"
+  (pack . show $ (fromIntegral . ceiling $ probability * 1000) / 10) `mappend` "%"

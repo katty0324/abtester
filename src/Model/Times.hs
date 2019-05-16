@@ -8,10 +8,7 @@ module Model.Times
 
 import           Import
 
-newtype Times =
-  Times
-    { getTimes :: Int
-    }
+type Times = Int
 
 displayTimes :: Times -> Text
-displayTimes times = pack . show $ getTimes times
+displayTimes = pack . show

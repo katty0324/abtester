@@ -3,21 +3,32 @@
 
 module Model.Variant
   ( Variant(..)
-  , variant
+  , conversionRate
+  , probabilityToBeast
+  , session
+  , conversion
   ) where
 
 import           Import
 import           Model.ConversionRate
-import           Model.Record
+import           Model.Probability
+import qualified Model.Record
 import           Model.Times
 
 data Variant =
   Variant
-    { record         :: Record
-    , conversionRate :: ConversionRate
-    , lowerConversionRate :: ConversionRate
-    , upperConversionRate :: ConversionRate
+    { record :: Model.Record.Record
     }
 
-variant :: Record -> Variant
-variant record = Variant record (calculateConversionRate record) (calculateLowerConversionRate record) (calculateUpperConversionRate record)
+conversionRate :: Float -> Variant -> ConversionRate
+conversionRate sigma variant = Model.Record.conversionRate sigma $ record variant
+
+probabilityToBeast :: Variant -> Variant -> Probability
+probabilityToBeast originalVariant targetVariant =
+  Model.Record.probabilityToBeast (record originalVariant) (record targetVariant)
+
+session :: Variant -> Times
+session = Model.Record.session . record
+
+conversion :: Variant -> Times
+conversion = Model.Record.conversion . record

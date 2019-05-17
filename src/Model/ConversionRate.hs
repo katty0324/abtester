@@ -2,14 +2,15 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Model.ConversionRate
-  ( ConversionRate(..)
+  ( ConversionRate
   , displayConversionRate
   ) where
 
 import           Import
+import           Model.Math
 
-type ConversionRate = Float
+type ConversionRate = Double
 
 displayConversionRate :: ConversionRate -> Text
 displayConversionRate conversionRate =
-  (pack . show $ (fromIntegral . ceiling $ conversionRate * 10000) / 100) `mappend` "%"
+  (pack . show . ceilingDigit 2 $ conversionRate * 100) `mappend` "%"

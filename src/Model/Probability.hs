@@ -2,14 +2,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Model.Probability
-  ( Probability(..)
+  ( Probability
   , displayProbability
   ) where
 
 import           Import
+import           Model.Math
 
-type Probability = Float
+type Probability = Double
 
 displayProbability :: Probability -> Text
-displayProbability probability =
-  (pack . show $ (fromIntegral . ceiling $ probability * 1000) / 10) `mappend` "%"
+displayProbability probability = (pack . show . ceilingDigit 1 $ probability * 100) `mappend` "%"

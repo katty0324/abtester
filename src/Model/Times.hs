@@ -2,7 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Model.Times
-  ( Times(..)
+  ( Times
   , displayTimes
   ) where
 

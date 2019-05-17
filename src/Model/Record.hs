@@ -11,7 +11,7 @@ module Model.Record
 
 import           Data.Number.Erf
 import           Import
-import          Model.ConversionRate
+import           Model.ConversionRate
 import           Model.Probability
 import           Model.Times
 
@@ -21,17 +21,17 @@ data Record =
     , conversion :: Times
     }
 
-mean :: Record -> Float
+mean :: Record -> Double
 mean record = (fromIntegral . conversion) record / (fromIntegral . session) record
 
-standardDeviation :: Record -> Float
+standardDeviation :: Record -> Double
 standardDeviation record = sqrt $ mean record * (1 - mean record) / (fromIntegral . session) record
 
-variance :: Record -> Float
-variance record = standardDeviation record ^ 2
+variance :: Record -> Double
+variance record = standardDeviation record ^ (2 :: Int)
 
-conversionRate :: Float -> Record -> ConversionRate
-conversionRate sigma record = mean record + sigma * (standardDeviation record)
+conversionRate :: Double -> Record -> ConversionRate
+conversionRate sigma record = mean record + sigma * standardDeviation record
 
 probabilityToBeast :: Record -> Record -> Probability
 probabilityToBeast originalRecord targetRecord =

@@ -20,7 +20,7 @@ data Variant =
     { record :: Model.Record.Record
     }
 
-conversionRate :: Float -> Variant -> ConversionRate
+conversionRate :: Double -> Variant -> ConversionRate
 conversionRate sigma variant = Model.Record.conversionRate sigma $ record variant
 
 probabilityToBeast :: Variant -> Variant -> Probability

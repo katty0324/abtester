@@ -11,17 +11,16 @@ import           Model.Times
 import           Text.Read    (readMaybe)
 
 extractRecord :: [(Text, Text)] -> Int -> Maybe Record
-extractRecord parameters index = do
-  session <- lookupValue parameters "session" index >>= parseTimes
-  conversion <- lookupValue parameters "conversion" index >>= parseTimes
-  Just $ Record session conversion
+extractRecord parameters i = do
+  session' <- lookupValue parameters "session" i >>= parseTimes
+  conversion' <- lookupValue parameters "conversion" i >>= parseTimes
+  Just $ Record session' conversion'
 
 lookupValue :: [(Text, Text)] -> Text -> Int -> Maybe Text
-lookupValue parameters key index = lookup (getKey key index) parameters
+lookupValue parameters key i = lookup (getKey key i) parameters
 
 getKey :: Text -> Int -> Text
-getKey key index =
-  "records[" `mappend` (pack $ show index) `mappend` "][" `mappend` key `mappend` "]"
+getKey key i = mconcat ["records[", pack . show $ i, "][", key, "]"]
 
 parseTimes :: Text -> Maybe Times
 parseTimes = readMaybe . unpack

@@ -1,4 +1,4 @@
-<div .card.my-3.mx-auto.w-75>
+<div .card.my-3.mx-auto>
   <div .card-body>
     <h2>_{MsgCaption}
     <p .text-muted>

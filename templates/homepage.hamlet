@@ -47,6 +47,10 @@
                 〜 #{fromMaybe "-" $ (displayConversionRate . conversionRate 2.0) <$> pattern1MaybeVariant}
             <td>
               #{fromMaybe "-" $ displayProbability <$> (pattern1MaybeVariant >>= probabilityToBeastOriginal)}
+              $if beastOriginal pattern1MaybeVariant
+                <span>&#127881;
+              $else
+                <span>
           <tr>
             <th>
               _{MsgPattern} 2
@@ -63,6 +67,10 @@
                 〜 #{fromMaybe "-" $ (displayConversionRate . conversionRate 2.0) <$> pattern2MaybeVariant}
             <td>
               #{fromMaybe "-" $ displayProbability <$> (pattern2MaybeVariant >>= probabilityToBeastOriginal)}
+              $if beastOriginal pattern2MaybeVariant
+                <span>&#127881;
+              $else
+                <span>
 
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}

@@ -24,6 +24,10 @@ getHomeR = do
       probabilityToBeastOriginal variant = do
         originalVariant <- originalMaybeVariant
         Just $ Model.Variant.probabilityToBeast originalVariant variant
+      beastOriginal maybeVariant =
+        case maybeVariant >>= probabilityToBeastOriginal of
+          Just probability -> probability > 0.99
+          Nothing          -> False
   defaultLayout $ do
     setTitle "AB Tester"
     $(widgetFile "homepage")

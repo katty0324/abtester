@@ -6,6 +6,6 @@ Pattern: Pattern
 SessionCount: Session Count
 ConversionCount: Conversion Count
 ConversionRate: Conversion Rate
-ProbabilityToBeatBaseline: Probability to beat baseline
+ProbabilityToBeatOriginal: Probability to beat original
 ProbabilityToBeBest: Probability to be best
 Test: Test

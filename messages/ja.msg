@@ -6,6 +6,6 @@ Pattern: パターン
 SessionCount: セッション数
 ConversionCount: コンバージョン数
 ConversionRate: CVR
-ProbabilityToBeatBaseline: ベースラインに勝つ確率
+ProbabilityToBeatOriginal: オリジナルに勝つ確率
 ProbabilityToBeBest: 最適である確率
 Test: 検証する

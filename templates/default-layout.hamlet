@@ -1,0 +1,12 @@
+<header>
+    <div .container-fluid.bg-primary.text-white>
+        <h1>AB Tester
+
+<div .container-fluid>
+    ^{widget}
+
+<footer>
+    <div .container-fluid>
+        <hr>
+        <p .text-right.text-muted>
+            #{appCopyright $ appSettings master}

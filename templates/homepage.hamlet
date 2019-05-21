@@ -1,0 +1,76 @@
+<div .card.my-3.mx-auto>
+  <div .card-body>
+    <h2>_{MsgCaption}
+    <p .text-muted>
+      _{MsgDescription}
+
+  <div .card-body>
+    <form method=get>
+      <table .table>
+        <thead>
+          <tr>
+            <th>
+            <th>_{MsgSessionCount}
+            <th>_{MsgConversionCount}
+            <th>_{MsgConversionRate}
+            <th>_{MsgProbabilityToBeatOriginal}
+        <tbody>
+          <tr>
+            <th>
+              _{MsgOriginal}
+            <td>
+              <input .form-control type=number name=records[0][session] value=#{fromMaybe "" $ (displayTimes . session) <$> originalMaybeVariant}>
+            <td>
+              <input .form-control type=number name=records[0][conversion] value=#{fromMaybe ""  $ (displayTimes . conversion) <$> originalMaybeVariant}>
+            <td>
+              <small .text-muted>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate -2.0) <$> originalMaybeVariant} 〜
+              <span>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate 0.0) <$> originalMaybeVariant}
+              <small .text-muted>
+                〜 #{fromMaybe "-" $ (displayConversionRate . conversionRate 2.0) <$> originalMaybeVariant}
+            <td>
+              -
+          <tr>
+            <th>
+              _{MsgPattern} 1
+            <td>
+              <input .form-control type=number name=records[1][session] value=#{fromMaybe "" $ (displayTimes . session) <$> pattern1MaybeVariant}>
+            <td>
+              <input .form-control type=number name=records[1][conversion] value=#{fromMaybe ""  $ (displayTimes . conversion) <$> pattern1MaybeVariant}>
+            <td>
+              <small .text-muted>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate -2.0) <$> pattern1MaybeVariant} 〜
+              <span>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate 0.0) <$> pattern1MaybeVariant}
+              <small .text-muted>
+                〜 #{fromMaybe "-" $ (displayConversionRate . conversionRate 2.0) <$> pattern1MaybeVariant}
+            <td>
+              #{fromMaybe "-" $ displayProbability <$> (pattern1MaybeVariant >>= probabilityToBeastOriginal)}
+              $if beastOriginal pattern1MaybeVariant
+                <span>&#127881;
+              $else
+                <span>
+          <tr>
+            <th>
+              _{MsgPattern} 2
+            <td>
+              <input .form-control type=number name=records[2][session] value=#{fromMaybe "" $ (displayTimes . session) <$> pattern2MaybeVariant}>
+            <td>
+              <input .form-control type=number name=records[2][conversion] value=#{fromMaybe ""  $ (displayTimes . conversion) <$> pattern2MaybeVariant}>
+            <td>
+              <small .text-muted>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate -2.0) <$> pattern2MaybeVariant} 〜
+              <span>
+                #{fromMaybe "-" $ (displayConversionRate . conversionRate 0.0) <$> pattern2MaybeVariant}
+              <small .text-muted>
+                〜 #{fromMaybe "-" $ (displayConversionRate . conversionRate 2.0) <$> pattern2MaybeVariant}
+            <td>
+              #{fromMaybe "-" $ displayProbability <$> (pattern2MaybeVariant >>= probabilityToBeastOriginal)}
+              $if beastOriginal pattern2MaybeVariant
+                <span>&#127881;
+              $else
+                <span>
+
+      <button .btn.btn-primary.btn-block type=submit>
+        _{MsgTest}

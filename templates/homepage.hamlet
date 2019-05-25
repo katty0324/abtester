@@ -74,3 +74,7 @@
 
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}
+
+
+      #{fromMaybe "~~" $ (displayPoints . probabilityDistributionPoints) <$> originalMaybeVariant}
+      #{fromMaybe "~~" $ (displayPoints . probabilityDistributionPoints) <$> pattern1MaybeVariant}

@@ -7,6 +7,7 @@ module Model.Record
   , standardDeviation
   , probabilityToBeast
   , conversionRate
+  , probabilityDistributionPoints
   ) where
 
 import           Data.Number.Erf
@@ -40,3 +41,15 @@ probabilityToBeast originalRecord targetRecord =
    erf
      (-(mean targetRecord - mean originalRecord) /
        sqrt (2 * (variance targetRecord + variance originalRecord))))
+
+probabilityDistributionPoints :: Record -> [(Probability, Double)]
+probabilityDistributionPoints record = zip xs (map (probabilityDistribution record) xs)
+  where
+    left = mean record - 4 * standardDeviation record
+    right = mean record + 4 * standardDeviation record
+    xs = [left,left + (right - left) / 20 .. right]
+
+probabilityDistribution :: Record -> Probability -> Double
+probabilityDistribution record probability =
+  1 / sqrt (2 * pi * variance record) *
+  exp (-(probability - mean record) ^ 2 / (2 * variance record))

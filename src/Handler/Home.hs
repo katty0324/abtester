@@ -9,6 +9,7 @@ module Handler.Home where
 import           Handler.Parser
 import           Import
 import           Model.ConversionRate
+import           Model.Point
 import           Model.Probability
 import           Model.Times
 import           Model.Variant

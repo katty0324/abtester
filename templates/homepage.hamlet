@@ -1,4 +1,4 @@
-<div .card.my-3.mx-auto style="max-width: 1000px;">
+<div .card.my-3.mx-auto.mw-1000px>
   <div .card-body>
     <h2>_{MsgCaption}
     <p .text-muted>

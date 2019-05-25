@@ -15,8 +15,7 @@ type Point = (Probability, Double)
 
 displayPoint :: Point -> Text
 displayPoint point =
-  mconcat
-    ["{x:", (pack . show . (* 100) . fst) point, ",y:", (pack . show . snd) point, "}"]
+  mconcat ["{x:", (pack . show . (* 100) . fst) point, ",y:", (pack . show . snd) point, "}"]
 
 displayPoints :: [Point] -> Text
-displayPoints points = mconcat $ fmap displayPoint points
+displayPoints points = "[" `mappend` (intercalate "," $ fmap displayPoint points) `mappend` "]"

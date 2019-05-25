@@ -13,6 +13,7 @@ import           Model.Point
 import           Model.Probability
 import           Model.Times
 import           Model.Variant
+import           Text.Julius          (RawJS (..))
 
 mkMessage "App" "messages" "en"
 

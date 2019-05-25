@@ -1,4 +1,4 @@
-<div .card.my-3.mx-auto>
+<div .card.my-3.mx-auto style="max-width: 1000px;">
   <div .card-body>
     <h2>_{MsgCaption}
     <p .text-muted>
@@ -75,6 +75,5 @@
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}
 
-
-      #{fromMaybe "~~" $ (displayPoints . probabilityDistributionPoints) <$> originalMaybeVariant}
-      #{fromMaybe "~~" $ (displayPoints . probabilityDistributionPoints) <$> pattern1MaybeVariant}
+  <div .card-body>
+    <canvas id=chart>

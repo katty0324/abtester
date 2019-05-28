@@ -7,10 +7,12 @@ module Model.Variant
   , probabilityToBeast
   , session
   , conversion
+  , probabilityDistributionPoints
   ) where
 
 import           Import
 import           Model.ConversionRate
+import           Model.Point
 import           Model.Probability
 import qualified Model.Record
 import           Model.Times
@@ -32,3 +34,6 @@ session = Model.Record.session . record
 
 conversion :: Variant -> Times
 conversion = Model.Record.conversion . record
+
+probabilityDistributionPoints :: Variant -> [Point]
+probabilityDistributionPoints variant = Model.Record.probabilityDistributionPoints $ record variant

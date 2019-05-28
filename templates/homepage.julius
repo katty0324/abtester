@@ -1,0 +1,49 @@
+var context = document.getElementById('chart').getContext('2d');
+var chart = new Chart(context, {
+  type: 'scatter',
+  data: {
+    datasets: [{
+      type: "line",
+      showLine: true,
+      backgroundColor: '#cccccc66',
+      pointRadius: 0,
+      borderWidth: 0,
+      label: 'Original',
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> originalMaybeVariant})
+    }, {
+      type: "line",
+      showLine: true,
+      backgroundColor: '#ff638466',
+      pointRadius: 0,
+      borderWidth: 0,
+      label: 'Pattern 1',
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> pattern1MaybeVariant})
+    }, {
+      type: "line",
+      showLine: true,
+      backgroundColor: '#36a2eb66',
+      pointRadius: 0,
+      borderWidth: 0,
+      label: 'Pattern 2',
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> pattern2MaybeVariant})
+    }]
+  },
+  options: {
+    aspectRatio: 3,
+    scales: {
+      yAxes: [{
+        display: false
+      }]
+    },
+    legend: {
+      display: true,
+      position: 'bottom'
+    }
+  }
+});
+
+function mapPoints(a){
+  return a.map(function(b){
+    return {x:b[0],y:b[1]};
+  });
+}

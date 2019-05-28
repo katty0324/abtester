@@ -6,12 +6,14 @@
 
 module Handler.Home where
 
+import           Data.Aeson
 import           Handler.Parser
 import           Import
 import           Model.ConversionRate
 import           Model.Probability
 import           Model.Times
 import           Model.Variant
+import           Text.Julius          (RawJS (..))
 
 mkMessage "App" "messages" "en"
 

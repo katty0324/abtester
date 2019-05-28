@@ -1,4 +1,4 @@
-<div .card.my-3.mx-auto>
+<div .card.my-3.mx-auto.mw-1000px>
   <div .card-body>
     <h2>_{MsgCaption}
     <p .text-muted>
@@ -74,3 +74,6 @@
 
       <button .btn.btn-primary.btn-block type=submit>
         _{MsgTest}
+
+  <div .card-body>
+    <canvas id=chart>

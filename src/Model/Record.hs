@@ -52,4 +52,4 @@ probabilityDistributionPoints record = zip xs (map (probabilityDistribution reco
 probabilityDistribution :: Record -> Probability -> Double
 probabilityDistribution record probability =
   1 / sqrt (2 * pi * variance record) *
-  exp (-(probability - mean record) ^ 2 / (2 * variance record))
+  exp (-(probability - mean record) ^ (2 :: Int) / (2 * variance record))

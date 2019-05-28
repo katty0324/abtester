@@ -6,7 +6,6 @@ module Model.Point
   ) where
 
 import           Import
-import           Model.Math
 import           Model.Probability
 
 type Point = (Probability, Double)

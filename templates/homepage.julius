@@ -9,7 +9,7 @@ var chart = new Chart(context, {
       pointRadius: 0,
       borderWidth: 0,
       label: 'Original',
-      data: #{rawJS $ fromMaybe "[]" $ (displayPoints . probabilityDistributionPoints) <$> originalMaybeVariant}
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> originalMaybeVariant})
     }, {
       type: "line",
       showLine: true,
@@ -17,7 +17,7 @@ var chart = new Chart(context, {
       pointRadius: 0,
       borderWidth: 0,
       label: 'Pattern 1',
-      data: #{rawJS $ fromMaybe "[]" $ (displayPoints . probabilityDistributionPoints) <$> pattern1MaybeVariant}
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> pattern1MaybeVariant})
     }, {
       type: "line",
       showLine: true,
@@ -25,7 +25,7 @@ var chart = new Chart(context, {
       pointRadius: 0,
       borderWidth: 0,
       label: 'Pattern 2',
-      data: #{rawJS $ fromMaybe "[]" $ (displayPoints . probabilityDistributionPoints) <$> pattern2MaybeVariant}
+      data: mapPoints(#{rawJS $ fromMaybe "[]" $ (decodeUtf8 . (encode . probabilityDistributionPoints)) <$> pattern2MaybeVariant})
     }]
   },
   options: {
@@ -41,3 +41,9 @@ var chart = new Chart(context, {
     }
   }
 });
+
+function mapPoints(a){
+  return a.map(function(b){
+    return {x:b[0],y:b[1]};
+  });
+}

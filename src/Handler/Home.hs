@@ -6,6 +6,7 @@
 
 module Handler.Home where
 
+import           Data.Aeson
 import           Handler.Parser
 import           Import
 import           Model.ConversionRate
